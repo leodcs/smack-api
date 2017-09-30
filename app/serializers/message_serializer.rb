@@ -1,5 +1,5 @@
 class MessageSerializer < ActiveModel::Serializer
-  attributes :userId, :text, :createdAt, :chatId
+  attributes :userId, :text, :createdAt
 
   def createdAt
     object.created_at
@@ -7,9 +7,5 @@ class MessageSerializer < ActiveModel::Serializer
 
   def userId
     object.sender_uid
-  end
-
-  def chatId
-    object.chat_id
   end
 end
