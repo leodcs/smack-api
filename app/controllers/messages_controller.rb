@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     chat = Chat.find(params[:chat_id])
-    @messages = chat.messages
+    @messages = chat.messages.order(:created_at)
     render_api(@messages)
   end
 
