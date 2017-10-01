@@ -22,8 +22,7 @@ class ChatsController < ApplicationController
   end
 
   def show
-    users = ChatUser.where(user_uid: [params[:sender_uid], params[:recipient_uid]])
-    @chat = Chat.between_users(users)
+    @chat = Chat.between_users(params[:sender_uid], params[:recipient_uid])
     render json: @chat, sender_uid: params[:sender_uid]
   end
 
