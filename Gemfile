@@ -14,9 +14,6 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use Redis adapter to run Action Cable in production
-gem 'redis'
-gem 'em-hiredis'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
@@ -35,5 +32,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :production do
+  # Use Redis adapter to run Action Cable in production
+  gem 'redis'
+end
