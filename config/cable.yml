@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:bc71b87a3da8a649d8846715d08d7c86@koi.redistogo.com:11085/
   channel_prefix: smack-api_production

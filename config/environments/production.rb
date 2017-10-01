@@ -80,4 +80,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configure Action Cable's Production URI
+  config.web_socket_server_url = "wss://apismack.herokuapp.com/cable"
 end
