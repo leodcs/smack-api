@@ -7,6 +7,11 @@ end
 
 ruby '2.4.2'
 
+# Translations for the devise gem
+gem 'devise-i18n'
+# Token based authentication for Rails JSON APIs
+gem 'devise_token_auth'
+# ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

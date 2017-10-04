@@ -4,17 +4,17 @@ class Chat < ApplicationRecord
   has_many :messages, dependent: :destroy
   accepts_nested_attributes_for :chat_users
 
-  def self.between_users(sender_uid, recipient_uid)
+  def self.between_users(current_user_id, recipient_user_id)
     Chat.find_by_sql("SELECT chats.* FROM chats
                       INNER JOIN chat_users ON chat_users.chat_id = chats.id
-                      INNER JOIN users ON users.uid = chat_users.user_uid
-                      WHERE users.uid = '#{sender_uid}'
+                      INNER JOIN users ON users.id = chat_users.user_id
+                      WHERE users.id = #{current_user_id}
 
                       INTERSECT
 
                       SELECT chats.* FROM chats
                       INNER JOIN chat_users ON chat_users.chat_id = chats.id
-                      INNER JOIN users ON users.uid = chat_users.user_uid
-                      WHERE users.uid = '#{recipient_uid}'").first
+                      INNER JOIN users ON users.id = chat_users.user_id
+                      WHERE users.id = #{recipient_user_id}").first
   end
 end

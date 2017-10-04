@@ -8,7 +8,7 @@ class ChatSerializer < ActiveModel::Serializer
   end
 
   def title
-    current_user = User.find(@instance_options[:sender_uid])
+    # current_user = User.find(@instance_options[:sender_uid])
     object.users.where.not(uid: current_user.uid).first.name
   end
 

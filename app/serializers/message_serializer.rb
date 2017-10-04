@@ -6,6 +6,6 @@ class MessageSerializer < ActiveModel::Serializer
   end
 
   def userId
-    object.sender_uid
+    object.user_id
   end
 end
