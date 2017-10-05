@@ -2,8 +2,7 @@ class Api::MessagesController < Api::ApiBaseController
   before_action :set_chat
 
   def index
-    chat = Chat.find(params[:chat_id])
-    @messages = chat.messages.order(:created_at)
+    @messages = @chat.messages.order(:created_at)
     render_api(@messages)
   end
 
