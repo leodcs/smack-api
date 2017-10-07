@@ -4,6 +4,7 @@ class Api::ChatsController < Api::ApiBaseController
   def index
     @chats = current_user.chats
                  .joins("LEFT OUTER JOIN messages ON messages.chat_id = chats.id")
+                 .order(updated_at: :desc)
                  .order('messages.created_at DESC')
                  .uniq
     render_api(@chats)
