@@ -2,7 +2,10 @@ class Api::ChatsController < Api::ApiBaseController
   before_action :set_chat, only: [:update, :destroy]
 
   def index
-    @chats = current_user.chats.joins(:messages).order('messages.created_at DESC').uniq
+    @chats = current_user.chats
+                 .joins("LEFT OUTER JOIN messages ON messages.chat_id = chats.id")
+                 .order('messages.created_at DESC')
+                 .uniq
     render_api(@chats)
   end
 
