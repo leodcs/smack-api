@@ -5,4 +5,6 @@ class Message < ApplicationRecord
     ChatBroadcastJob.perform_later(self)
     chat.update_attribute(:updated_at, Time.now)
   end
+
+  scope :unread_by, ->(user) { where(read: false).where.not(sender: user) }
 end

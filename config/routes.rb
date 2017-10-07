@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show]
     resources :chats, except: [:show] do
-      resources :messages, only: [:index, :create]
+      resources :messages, only: [:index, :create, :update]
     end
   end
 end

@@ -17,4 +17,8 @@ class Chat < ApplicationRecord
                       INNER JOIN users ON users.id = chat_users.user_id
                       WHERE users.id = #{recipient_user_id}").first
   end
+
+  def mark_messages_as_read_by(current_user)
+    messages.unread_by(current_user).update_all(read: true)
+  end
 end

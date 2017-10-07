@@ -3,6 +3,7 @@ class Api::MessagesController < Api::ApiBaseController
 
   def index
     @messages = @chat.messages.order(:created_at)
+    @chat.mark_messages_as_read_by(current_user)
     render_api(@messages)
   end
 
@@ -13,12 +14,18 @@ class Api::MessagesController < Api::ApiBaseController
     render_api(@message)
   end
 
-  private
-  def message_params
-    params.require(:message).permit(:text)
+  def update
+    @message = @chat.messages.find(params[:id])
+    @message.update(message_params)
+    render_api(@message)
   end
 
+  private
   def set_chat
     @chat = Chat.find(params[:chat_id])
+  end
+
+  def message_params
+    params.require(:message).permit(:text, :read)
   end
 end

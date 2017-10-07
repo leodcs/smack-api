@@ -1,5 +1,5 @@
 class MessageSerializer < ActiveModel::Serializer
-  attributes :userId, :text, :createdAt
+  attributes :id, :userId, :text, :createdAt
 
   def createdAt
     object.created_at
